@@ -1,9 +1,9 @@
 var app = angular.module("firstApp",[]);
 
-app.controller("firstController", ["$scope", "$http", function(m, h){
-    m.nombre = "CF";
-    m.listPost = [];
-    m.comentarios = [
+app.controller("firstController",  function($scope, $http){
+    $scope.nombre = "CF";
+    $scope.listPost = [];
+    $scope.comentarios = [
         {
             nombre: "Comentario 1",
             creadoPor: "Camilo 1"
@@ -14,13 +14,30 @@ app.controller("firstController", ["$scope", "$http", function(m, h){
         }
     ];
 
-    m.agregarComentario = function(){
-        m.comentarios.push({nombre: m.nombreNuevo, creadoPor: "Camilo"});
+    $scope.agregarComentario = function(){
+        $scope.comentarios.push({nombre: $scope.nombreNuevo, creadoPor: "Camilo"});
     }
-    h.get("http://jsonplaceholder.typicode.com/posts")
-    .then(function(data){
-        m.listPost = data;
+
+    $scope.logSession = function(){
+        $http.post('http://vudc.capp.la/vudc/vudc-security-service/public/login', {
+            username: $scope.username,
+            password: $scope.password
+        })
+        .then(function(dataResponse){
+            if(dataResponse.status == 200){
+                $scope.result = "Usuario logueado";
+            }else if(dataResponse.status == 404){
+                $scope.result = "Usuario incorrecto";
+            }
+        }, function(error){
+            console.log(error);
+        });
+    }
+
+    $scope.listPost = $http.get("http://jsonplaceholder.typicode.com/posts")
+    .then(function(info){
+       return info;
     },function(error){
 
     });
-}]);
+});

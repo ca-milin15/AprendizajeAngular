@@ -21,11 +21,16 @@
     <input type="button" ng-click="agregarComentario()" value="Aceptar">
     <br>
     <hr>
+    <h3>Peticion POST visor</h3>
+    <input type="text" value="Usuario" ng-model="username"> 
+    <input type="text" value="Contraseña" ng-model="password"> 
+    <input type="button" ng-click="logSession()" value="Iniciar Sesion">
+    <br>
+    <span>{{result}}</span>
+    <hr>
+    <h3>Peticion Get API typiCode</h3>
     <ul>
-        <li ng-repeat="element in listPost">{{element.title}}</li>
+        <li ng-repeat="element in listPost.data">{{element.title}}</li>
     </ul>
-   <!-- <input type="text" value="Usuario"> 
-   <input type="text" value="Contraseña"> 
-   <input type="button" ng-click="" value="Iniciar Sesion"> -->
 </body>
 </html>
