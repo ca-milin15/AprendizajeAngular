@@ -21,9 +21,11 @@
     <input type="button" ng-click="agregarComentario()" value="Aceptar">
     <br>
     <hr>
-    
-   <input type="text" value="Usuario"> 
+    <ul>
+        <li ng-repeat="element in listPost">{{element.title}}</li>
+    </ul>
+   <!-- <input type="text" value="Usuario"> 
    <input type="text" value="Contraseña"> 
-   <input type="button" ng-click="" value="Iniciar Sesion">
+   <input type="button" ng-click="" value="Iniciar Sesion"> -->
 </body>
 </html>
