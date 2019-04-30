@@ -39,6 +39,7 @@ app.controller("firstController",  function($scope, $http){
     $scope.listPost = $http.get("http://jsonplaceholder.typicode.com/posts")
     .then(function(info){
        return info;
+    });
 
     $http.get("http://jsonplaceholder.typicode.com/posts")
     .then(function(data){
@@ -47,5 +48,4 @@ app.controller("firstController",  function($scope, $http){
     },function(error){
     });
 
-    });
-}]);
+});
