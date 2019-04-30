@@ -1,10 +1,8 @@
-var app = angular.module("firstApp",[]);
+var app = angular.module("firstApp",["LocalStorageModule"]);
 
-app.controller("firstController",  function($scope, $http){
+app.controller("firstController",  function($scope, $http, localStorageModule){
     $scope.nombre = "CF";
     $scope.listPost = [];
-    $scope.listPostx = [];
-    $scope.newPost = {};
     $scope.comentarios = [
         {
             nombre: "Comentario 1",
@@ -39,13 +37,7 @@ app.controller("firstController",  function($scope, $http){
     $scope.listPost = $http.get("http://jsonplaceholder.typicode.com/posts")
     .then(function(info){
        return info;
-    });
-
-    $http.get("http://jsonplaceholder.typicode.com/posts")
-    .then(function(data){
-        $scope.listPost = data;
-        console.log(data);
     },function(error){
-    });
 
+    });
 });
