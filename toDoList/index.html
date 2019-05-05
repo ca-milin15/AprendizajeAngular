@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-    <script src="js/angular-local-storage.min.js"></script>
+    <script src="../js/angular-local-storage.min.js"></script>
     <script src="controller.js"></script>
 </head>
 <body ng-controller="secondController">
     <ul>
-        <li ng-repeat="actividad in todo" >{{actividad.descripcion}} - {{actividad.fecha}}</li>
+        <li ng-repeat="actividad in todo">
+            {{actividad.descripcion}} - 
+            {{actividad.fecha | date: 'short'}}
+        </li>
     </ul>
-    <form action="" method="post">
-        <span><input type="text" ng-model="newActv.descripcion"></span> 
-        <span><input type="datetime-local" ng-model="newActv.fecha"></span> 
-        <input type="submit" value="Guardar">
+    <form ng-submit="addActv()">
+        <span>
+            <input type="text" ng-model="newActv.descripcion">
+        </span> 
+        <span>
+            <input type="datetime-local" ng-model="newActv.fecha">
+        </span> 
+        <input type="submit" value="Aceptar"></input>
     </form>
 </body>
 </html>
