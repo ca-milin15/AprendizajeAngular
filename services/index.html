@@ -1,0 +1,29 @@
+<!DOCTYPE html >
+<html ng-app="ToDoList">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="../js/angular-local-storage.min.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body ng-controller="secondController">
+    <ul>
+        <li ng-repeat="actividad in todo">
+            {{actividad.descripcion}} - 
+            {{actividad.fecha | date: 'short'}} 
+            <button ng-click="removeActv(actividad)" >Eliminar</button>
+        </li>
+    </ul>
+    <form ng-submit="addActv()">
+        <span>
+            <input type="text" ng-model="newActv.descripcion">
+        </span> 
+        <span>
+            <input type="date" ng-model="newActv.fecha">
+        </span> 
+        <input type="submit" value="Aceptar"></input>
+    </form>
+</body>
+</html>
